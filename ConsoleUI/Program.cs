@@ -15,10 +15,16 @@ namespace ConsoleUI
             //CarUpdate();
             //CarAdd();
             //ColorAdd();
-            CarDetails();
+            //CarDetails();
+            CallWithId();
 
-            
+        }
 
+        private static void CallWithId()
+        {
+            CarManager carManager = new CarManager(new EfCarDal());
+            var result = carManager.GetById(2);
+            Console.WriteLine(result.Data.CarName);
         }
 
         private static void BrandAdd()
@@ -31,7 +37,7 @@ namespace ConsoleUI
         {
             CarManager carManager = new CarManager(new EfCarDal());
 
-            foreach (var car in carManager.GetCarDetails())
+            foreach (var car in carManager.GetCarDetails().Data)
             {
                 Console.WriteLine(car.CarName + "/" + car.BrandName + "/" + car.ColorName + "/" + car.DailyPrice);
             }
@@ -56,7 +62,7 @@ namespace ConsoleUI
             carManager.Update(new Car { CarId = 2, BrandId = 2, ColorId = 1, DailyPrice = 85, ModelYear = 2008, Description = "Kirli" ,CarName= "Hafif Ticari" });
             carManager.Update(new Car { CarId = 4, BrandId = 2, ColorId = 1, DailyPrice = 85, ModelYear = 2008, Description = "Kirli" ,CarName= "Otomabil" });
 
-            foreach (var car in carManager.GetAll())
+            foreach (var car in carManager.GetAll().Data)
             {
                 Console.WriteLine(car.CarName);
             }
@@ -74,7 +80,7 @@ namespace ConsoleUI
             carManager.Add(car2);
             carManager.Add(car3);
             carManager.Add(car4);
-            foreach (var car in carManager.GetAll())
+            foreach (var car in carManager.GetAll().Data)
             {
                 Console.WriteLine(car.Description);
             }
