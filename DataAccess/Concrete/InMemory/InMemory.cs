@@ -18,11 +18,11 @@ namespace DataAccess.Concrete
         {
             _cars = new List<Car> 
             {
-                new Car{CarId=1,BrandId=2,ColorId=1,DailyPrice=10,ModelYear=2012,Description="2013 iki takla"},
-                new Car{CarId=2,BrandId=1,ColorId=3,DailyPrice=16,ModelYear=2020,Description="Hasarsız"},
-                new Car{CarId=3,BrandId=1,ColorId=1,DailyPrice=25,ModelYear=2018,Description="Hasar var ama tramer kaydına geçmemiş"},
-                new Car{CarId=4,BrandId=2,ColorId=2,DailyPrice=34,ModelYear=2019,Description="2020 üç takla"},
-                new Car{CarId=5,BrandId=1,ColorId=3,DailyPrice=48,ModelYear=2015,Description="Hafif hasar"}
+                new Car{Id=1,BrandId=2,ColorId=1,DailyPrice=10,ModelYear=2012,Description="2013 iki takla"},
+                new Car{Id=2,BrandId=1,ColorId=3,DailyPrice=16,ModelYear=2020,Description="Hasarsız"},
+                new Car{Id=3,BrandId=1,ColorId=1,DailyPrice=25,ModelYear=2018,Description="Hasar var ama tramer kaydına geçmemiş"},
+                new Car{Id=4,BrandId=2,ColorId=2,DailyPrice=34,ModelYear=2019,Description="2020 üç takla"},
+                new Car{Id=5,BrandId=1,ColorId=3,DailyPrice=48,ModelYear=2015,Description="Hafif hasar"}
                 
             };
         }
@@ -35,7 +35,7 @@ namespace DataAccess.Concrete
 
         public void Delete(Car car)
         {
-            var carDelete = _cars.SingleOrDefault(c => c.CarId == car.CarId);
+            var carDelete = _cars.SingleOrDefault(c => c.Id == car.Id);
             _cars.Remove(carDelete);
         }
 
@@ -45,13 +45,13 @@ namespace DataAccess.Concrete
         }
         List<Car> GetById(int id)
         {
-            return _cars.Where(c => c.CarId == id).ToList();
+            return _cars.Where(c => c.Id == id).ToList();
         }
 
 
         public void Update(Car car)
         {
-            var carUpdate = _cars.SingleOrDefault(c => c.CarId == car.CarId);
+            var carUpdate = _cars.SingleOrDefault(c => c.Id == car.Id);
             carUpdate.BrandId = car.BrandId;
             carUpdate.ColorId = car.ColorId;
             carUpdate.DailyPrice = car.DailyPrice;
