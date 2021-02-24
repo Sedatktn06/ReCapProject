@@ -36,6 +36,14 @@ namespace ConsoleUI
                 ReturnDate = DateTime.Parse("07-03-2021")
             };
             */
+
+            //AddRental();
+            .
+
+        }
+
+        private static void AddRental()
+        {
             Rental rental2 = new Rental()
             {
                 CarId = 3,
@@ -45,11 +53,6 @@ namespace ConsoleUI
             };
             RentalManager rentalManager = new RentalManager(new EfRentalDal());
             Console.WriteLine(rentalManager.Add(rental2).Message);
-            
-
-            
-
-            
         }
 
         private static void CallWithId()
