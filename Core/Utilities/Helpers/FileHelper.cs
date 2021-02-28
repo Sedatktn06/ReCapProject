@@ -11,6 +11,7 @@ namespace Core.Utilities.Helpers
     {
         public static string Add(IFormFile file)
         {
+            //Geçici bir dosya oluşturur ve bu dosyanın tam yolunu gönderir.
             var sourcepath = Path.GetTempFileName();
             if (file.Length > 0)
             {

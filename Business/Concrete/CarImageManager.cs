@@ -24,6 +24,8 @@ namespace Business.Concrete
         {
             _carImageDal = carImageDal;
         }
+
+
         [ValidationAspect(typeof(CarImageValidator))]
         public IResult Add(IFormFile file, CarImage carImage)
         {
@@ -37,6 +39,8 @@ namespace Business.Concrete
             _carImageDal.Add(carImage);
             return new SuccessResult();
         }
+
+
         [ValidationAspect(typeof(CarImageValidator))]
         public IResult Delete(CarImage carImage)
         {
@@ -44,6 +48,8 @@ namespace Business.Concrete
             _carImageDal.Delete(carImage);
             return new SuccessResult();
         }
+
+
         [ValidationAspect(typeof(CarImageValidator))]
         public IResult Update(IFormFile file, CarImage carImage)
         {
@@ -52,6 +58,8 @@ namespace Business.Concrete
             _carImageDal.Update(carImage);
             return new SuccessResult();
         }
+
+
         [ValidationAspect(typeof(CarImageValidator))]
         public IDataResult<CarImage> Get(int id)
         {
@@ -67,6 +75,8 @@ namespace Business.Concrete
             return new SuccessDataResult<List<CarImage>>(CheckIfCarImageNull(id));
         }
 
+
+
         //business rules
         private IResult CheckImageLimitExceeded(int carid)
         {
@@ -78,9 +88,11 @@ namespace Business.Concrete
 
             return new SuccessResult();
         }
+
+
         private List<CarImage> CheckIfCarImageNull(int id)
         {
-            string path = @"\Images\logo.jpg";
+            string path = @"\Images\sirketlogo.jpg";
             var result = _carImageDal.GetAll(c => c.CarId == id).Any();
             if (!result)
             {
