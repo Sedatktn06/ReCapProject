@@ -14,6 +14,7 @@ namespace Business.Concrete
     public class UserManager : IUserService
     {
         IUserDal _userDal;
+
         public UserManager(IUserDal userDal)
         {
             _userDal = userDal;
@@ -33,6 +34,7 @@ namespace Business.Concrete
 
         public IDataResult<List<User>> GetAll()
         {
+            
             return new SuccessDataResult<List<User>>(_userDal.GetAll());
         }
 

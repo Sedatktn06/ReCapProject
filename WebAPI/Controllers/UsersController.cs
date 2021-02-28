@@ -11,11 +11,11 @@ namespace WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class UsersContoller : ControllerBase
+    public class UsersController : ControllerBase
     {
         IUserService _userService;
 
-        public UsersContoller(IUserService userService)
+        public UsersController(IUserService userService)
         {
             _userService = userService;
         }
@@ -28,9 +28,9 @@ namespace WebAPI.Controllers
 
             if (result.Success)
             {
-                return Ok(result.Message);
+                return Ok(result);
             }
-            return BadRequest(result.Message);
+            return BadRequest(result);
         }
 
 
