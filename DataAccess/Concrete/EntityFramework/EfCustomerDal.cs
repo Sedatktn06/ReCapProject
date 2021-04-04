@@ -21,6 +21,7 @@ namespace DataAccess.Concrete.EntityFramework
                              on customer.UserId equals user.Id
                              select new CustomerDetailDto
                              {
+                                 CustomerId=customer.Id,
                                  CompanyName = customer.CompanyName,
                                  Email = user.Email,
                                  FirstName = user.FirstName,

@@ -57,7 +57,16 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
-
+        [HttpGet("getrentaldetailsbycarid")]
+        public IActionResult GetRentalDetailsByCarId(int id)
+        {
+            var result = _rentalService.GetRentalDetailsByCarId(id);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
 
         [HttpPost("add")]
         public IActionResult Add(Rental rental)
@@ -67,6 +76,19 @@ namespace WebAPI.Controllers
             {
                 return Ok(result);
             }
+            return BadRequest(result);
+        }
+
+        [HttpGet("iscaravailable")]
+        public IActionResult IsCarAvailable(int carId)
+        {
+            var result = _rentalService.IsCarAvailable(carId);
+
+            if (result)
+            {
+                return Ok(result);
+            }
+
             return BadRequest(result);
         }
 

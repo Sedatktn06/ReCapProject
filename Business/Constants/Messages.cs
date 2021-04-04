@@ -17,6 +17,7 @@ namespace Business.Constants
         public static string UserAdded = "Kullanıcı Eklendi";
         public static string InvalidSale = "Araba şuan elimizde değil";
         public static string RentalAdded = "Araba kiralandı";
+        public static string RentalFailedAdded = "Araba kiralanamaz. Önceki müşteri teslim etmemiş";
         public static string CarImageAdded = "Car Image Added Successfully!";
         public static string CarImageCarIdInvalid = "Invalid Car Id, Registration Failed.";
         public static string CarImageDeleted = "Car Image Deleted Successfully!";
@@ -32,5 +33,9 @@ namespace Business.Constants
         public static string CarImagesCountExceded = "Bir aracın en fazla 5 resmi olabilir.";
         public static string succeed = "başarılı";
         public static string listed = "listelendi";
+        public static string SuccessfullyPaid = "Başarılı Ödeme";
+        public static string RentalReturnDateError = "The car cannot be rented on the requested dates.";
+        public static string RentalDateOk = "The car can be delivered on the requested dates.";
+        public static string CardAdded = "Card eklendi";
     }
 }
