@@ -7,6 +7,7 @@ using Core.Entities.Concrete;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
+using Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -55,6 +56,16 @@ namespace Business.Concrete
         {
             _userDal.Update(user);
             return new SuccessResult();
+        }
+        public IDataResult<UserDetailDto> GetUserDetailByMail(string email)
+        {
+            var user = GetByMail(email);
+            return new SuccessDataResult<UserDetailDto>(_userDal.GetUserDetailById(user.Data.Id));
+        }
+
+        public IDataResult<List<UserDetailDto>> GetUserDetails()
+        {
+            return new SuccessDataResult<List<UserDetailDto>>(_userDal.GetUserDetails());
         }
     }
 }

@@ -48,6 +48,9 @@ namespace Business.DependencyResolvers.Autofac
             builder.RegisterType<JwtHelper>().As<ITokenHelper>().SingleInstance();
             builder.RegisterType<AuthManager>().As<IAuthService>().SingleInstance();
 
+            builder.RegisterType<FindeksManager>().As<IFindeksService>();
+            builder.RegisterType<EfFindeksDal>().As<IFindeksDal>();
+
             builder.RegisterType<HttpContextAccessor>().As<IHttpContextAccessor>().SingleInstance();
 
 

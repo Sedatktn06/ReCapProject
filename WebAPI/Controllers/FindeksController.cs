@@ -1,5 +1,4 @@
 ﻿using Business.Abstract;
-using Core.Entities.Concrete;
 using Entities.Concrete;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -12,70 +11,69 @@ namespace WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class UsersController : ControllerBase
+    public class FindeksController : ControllerBase
     {
-        IUserService _userService;
-
-        public UsersController(IUserService userService)
+        IFindeksService _findeksService;
+        public FindeksController(IFindeksService findeksService)
         {
-            _userService = userService;
+            _findeksService = findeksService;
         }
-
-
         [HttpGet("getall")]
         public IActionResult GetAll()
         {
-            var result = _userService.GetAll();
-
+            var result = _findeksService.GetAll();
             if (result.Success)
             {
                 return Ok(result);
             }
             return BadRequest(result);
         }
-
-
-        [HttpGet("getbyemail")]
-        public IActionResult GetById(string email)
+        [HttpGet("getbyid")]
+        public IActionResult GetById(int id)
         {
-            var result = _userService.GetByMail(email);
+            var result = _findeksService.GetByFindeksId(id);
             if (result.Success)
             {
                 return Ok(result);
             }
             return BadRequest(result);
         }
-
 
 
         [HttpPost("add")]
-        public IActionResult Add(User user)
+        public IActionResult Add(Findeks findeks)
         {
-            var result = _userService.Add(user);
+            var result = _findeksService.Add(findeks);
             if (result.Success)
             {
                 return Ok(result);
             }
             return BadRequest(result);
         }
-
-
         [HttpPost("delete")]
-        public IActionResult Delete(User user)
+        public IActionResult Delete(Findeks findeks)
         {
-            var result = _userService.Delete(user);
+            var result = _findeksService.Delete(findeks);
             if (result.Success)
             {
                 return Ok(result);
             }
             return BadRequest(result);
         }
-
-
         [HttpPost("update")]
-        public IActionResult Update(User user)
+        public IActionResult Update(Findeks findeks)
         {
-            var result = _userService.Update(user);
+            var result = _findeksService.Update(findeks);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+        [HttpGet("calculate")]
+        public IActionResult CalculateFindeks(int identityNumber, int carId)
+        {
+            var result = _findeksService.CalculateFindeks(identityNumber, carId);
             if (result.Success)
             {
                 return Ok(result);
@@ -83,26 +81,6 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
-        [HttpGet("getallusersdto")]
-        public IActionResult GetByUserDto()
-        {
-            var result = _userService.GetUserDetails();
-            if (result.Success)
-            {
-                return Ok(result);
-            }
-            return BadRequest(result);
-        }
-        [HttpGet("getbymailuserdto")]
-        public IActionResult GetByUserDto(string email)
-        {
-            var result = _userService.GetUserDetailByMail(email);
-            if (result.Success)
-            {
-                return Ok(result);
-            }
-            return BadRequest(result);
-        }
 
     }
 }
